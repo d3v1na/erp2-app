@@ -54,9 +54,9 @@ class _WelcomeState extends State<Welcome> {
                   ),
 
                   SizedBox(
-                      height: height * 0.04), // Adjust the height as needed
+                      height: height * 0.04), 
 
-                  // Email Input
+                  
                   const TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -109,7 +109,7 @@ class _WelcomeState extends State<Welcome> {
 
                   SizedBox(height: height * 0.35),
 
-                  // Center the Sign In Button
+                 
                   Align(
                     alignment: Alignment.center,
                     child: ElevatedButton(
@@ -136,7 +136,7 @@ class _WelcomeState extends State<Welcome> {
 
                   SizedBox(height: height * 0.01),
 
-                  // Forgot Password
+                  
                   Align(
                     alignment: Alignment.center,
                     child: GestureDetector(
