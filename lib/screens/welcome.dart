@@ -98,7 +98,7 @@ class _WelcomeState extends State<Welcome> {
                             _passwordVisible
                                 ? Icons.visibility
                                 : Icons.visibility_off,
-                            color: Color(0xFF545F71),
+                            color: const Color(0xFF545F71),
                           ),
                         ),
                       ),
@@ -115,7 +115,7 @@ class _WelcomeState extends State<Welcome> {
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF545F71)),
+                          backgroundColor: const Color(0xFF545F71)),
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
