@@ -2,6 +2,7 @@ import 'package:erp2_app/screens/course_list.dart';
 import 'package:flutter/material.dart';
 import 'package:erp2_app/screens/welcome.dart';
 import 'package:erp2_app/screens/dashboard.dart';
+import 'package:erp2_app/screens/search.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Inter',
       ),
-      home: const CourseList(),
+      home: const Search(),
     );
   }
 }
