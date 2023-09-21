@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:erp2_app/screens/welcome.dart';
 import 'package:erp2_app/screens/dashboard.dart';
 import 'package:erp2_app/screens/search.dart';
+import 'package:erp2_app/screens/search_results.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Inter',
       ),
-      home: const Search(),
+      home: const SearchResults(),
     );
   }
 }
