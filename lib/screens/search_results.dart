@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:erp2_app/models/cs_courses.dart';
 import 'package:erp2_app/models/course.dart';
-import 'package:erp2_app/models/my_courses.dart';
 
 class SearchResults extends StatefulWidget {
   const SearchResults({Key? key}) : super(key: key);
@@ -70,13 +70,13 @@ class _SearchResultsState extends State<SearchResults> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // My Courses heading
+            //number of search results
             Text(
-              "My Courses",
+              "${courses.length} results found",
               style: TextStyle(
                 color: const Color(0xff545F71),
-                fontSize: width * 0.05,
-                fontWeight: FontWeight.w700,
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
               ),
             ),
 
@@ -121,137 +121,57 @@ class _SearchResultsState extends State<SearchResults> {
                 itemCount: courses.length,
                 itemBuilder: (context, index) {
                   Course course = courses[index];
-                  return Card(
-                    margin: const EdgeInsets.symmetric(vertical: 4),
-                    elevation: 2,
-                    child: ListTile(
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
-                      leading: CircleAvatar(
-                          backgroundColor: const Color(0xff545F71),
-                          radius: 24,
-                          child: Container(
-                            alignment: Alignment.center,
-                            child: Text(
-                              course.code,
-                              style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white,
+                  return GestureDetector(
+                    onTap: () {
+                      //navigate to next screen
+                      
+                    },
+                    child: Card(
+                      margin: const EdgeInsets.symmetric(vertical: 4),
+                      elevation: 2,
+                      child: ListTile(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 8,
+                        ),
+                        leading: CircleAvatar(
+                            backgroundColor: const Color(0xff545F71),
+                            radius: 24,
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                course.code,
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                          )),
-                      title: Text(
-                        course.name,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xff545F71),
+                            )),
+                        title: Text(
+                          course.name,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xff545F71),
+                          ),
                         ),
-                      ),
-                      subtitle: Text(
-                        course.instructor,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xff545F71),
+                        subtitle: Text(
+                          course.instructor,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xff545F71),
+                          ),
                         ),
+                        trailing: Text(course.credits),
                       ),
-                      trailing: Text(course.credits),
                     ),
                   );
                 },
               ),
             ),
-
-            Row(
-              // 3 buttons
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                //button 1 for enroll
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle button click here
-                  },
-                  child: Text(
-                    "Enroll",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-
-                    minimumSize: Size(108, 48),
-                    primary: const Color(0xff545F71),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 13,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                  ),
-                ),
-
-                //button 2 for drop
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle button click here
-                  },
-                  child: Text(
-                    "Drop",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(108, 48),
-                    primary: Color.fromARGB(153, 84, 95, 113),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 13,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                  ),
-                ),
-
-                //button 3 for swap
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle button click here
-                  },
-                  child: Text(
-                    "Swap",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(108, 48),
-                    primary: Color.fromARGB(153, 84, 95, 113),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 13,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                  ),
-                ),
-              ],
-            )
           ],
-
         ),
       ),
     );
