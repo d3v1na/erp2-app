@@ -1,3 +1,4 @@
+import 'package:erp2_app/screens/search_results.dart';
 import 'package:flutter/material.dart';
 
 class Search extends StatefulWidget {
@@ -301,7 +302,11 @@ class _SearchState extends State<Search> {
                 ),
               ElevatedButton(
                   onPressed: () {
-                    // Handle button click here
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const SearchResults(),
+                      ),
+                    );
                   },
                   child: Text(
                     "Search",

@@ -1,3 +1,4 @@
+import 'package:erp2_app/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class Welcome extends StatefulWidget {
@@ -39,7 +40,6 @@ class _WelcomeState extends State<Welcome> {
                       letterSpacing: -0.64,
                     ),
                   ),
-
                   SizedBox(height: height * 0.01),
                   const Text(
                     'Login into your ERP below',
@@ -52,11 +52,7 @@ class _WelcomeState extends State<Welcome> {
                       letterSpacing: -0.32,
                     ),
                   ),
-
-                  SizedBox(
-                      height: height * 0.04), 
-
-                  
+                  SizedBox(height: height * 0.04),
                   const TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -72,7 +68,6 @@ class _WelcomeState extends State<Welcome> {
                       ),
                     ),
                   ),
-
                   SizedBox(height: height * 0.02),
                   TextField(
                       controller: _passwordController,
@@ -106,14 +101,17 @@ class _WelcomeState extends State<Welcome> {
                       obscuringCharacter: '●',
                       style: const TextStyle(
                           fontSize: 16, color: Color(0xFF545F71))),
-
                   SizedBox(height: height * 0.35),
-
-                 
                   Align(
                     alignment: Alignment.center,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const dashboard(),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF545F71)),
                       child: const Row(
@@ -133,10 +131,7 @@ class _WelcomeState extends State<Welcome> {
                       ),
                     ),
                   ),
-
                   SizedBox(height: height * 0.01),
-
-                  
                   Align(
                     alignment: Alignment.center,
                     child: GestureDetector(

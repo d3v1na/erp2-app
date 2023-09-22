@@ -2,10 +2,10 @@ import 'package:erp2_app/models/course.dart';
 import 'package:flutter/material.dart';
 import 'package:erp2_app/models/my_courses.dart';
 import 'package:erp2_app/screens/course_details_screen.dart';
+import 'package:erp2_app/screens/search.dart';
 
 class CourseList extends StatefulWidget {
   const CourseList({Key? key}) : super(key: key);
-
 
   @override
   _CourseListState createState() => _CourseListState();
@@ -124,60 +124,56 @@ class _CourseListState extends State<CourseList> {
                 itemBuilder: (context, index) {
                   Course course = courses[index];
                   return GestureDetector(
-                    onTap: () {
-                      //navigate to course details screen
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CourseDetailsScreen(
+                      onTap: () {
+                        //navigate to course details screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CourseDetailsScreen(),
                           ),
-                        ),
-                      );
-
-                    },
-                    child: Card(
-                    margin: const EdgeInsets.symmetric(vertical: 4),
-                    elevation: 2,
-                    child: ListTile(
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
-                      leading: CircleAvatar(
-                          backgroundColor: const Color(0xff545F71),
-                          radius: 24,
-                          child: Container(
-                            alignment: Alignment.center,
-                            child: Text(
-                              course.code,
-                              style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white,
-                              ),
+                        );
+                      },
+                      child: Card(
+                        margin: const EdgeInsets.symmetric(vertical: 4),
+                        elevation: 2,
+                        child: ListTile(
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          leading: CircleAvatar(
+                              backgroundColor: const Color(0xff545F71),
+                              radius: 24,
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  course.code,
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )),
+                          title: Text(
+                            course.name,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xff545F71),
                             ),
-                          )),
-                      title: Text(
-                        course.name,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xff545F71),
+                          ),
+                          subtitle: Text(
+                            course.instructor,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xff545F71),
+                            ),
+                          ),
+                          trailing: Text(course.credits),
                         ),
-                      ),
-                      subtitle: Text(
-                        course.instructor,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xff545F71),
-                        ),
-                      ),
-                      trailing: Text(course.credits),
-                    ),
-                  )
-
-                  );
+                      ));
                 },
               ),
             ),
@@ -189,7 +185,11 @@ class _CourseListState extends State<CourseList> {
                 //button 1 for enroll
                 ElevatedButton(
                   onPressed: () {
-                    // Handle button click here
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const Search(),
+                      ),
+                    );
                   },
                   child: Text(
                     "Enroll",

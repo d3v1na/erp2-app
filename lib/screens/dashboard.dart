@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'course_list.dart';
 
 class dashboard extends StatefulWidget {
   const dashboard({super.key});
@@ -12,10 +13,14 @@ class _dashboardState extends State<dashboard> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    ElevatedButton buildElevatedButton(String text, String imagePath) {
+    ElevatedButton buildElevatedButton(
+        BuildContext context, String text, String imagePath, Widget screen) {
       return ElevatedButton(
         onPressed: () {
-          // Add your button's functionality here
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => screen),
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.white, // Background color
@@ -25,19 +30,20 @@ class _dashboardState extends State<dashboard> {
             borderRadius: BorderRadius.circular(6),
             side: BorderSide(
               color: const Color(0xff545F71),
-              width: width * 0.004,
+              width: MediaQuery.of(context).size.width * 0.004,
             ),
           ),
         ),
         child: Container(
-          width: width * 0.4,
-          height: height * 0.2,
+          width: MediaQuery.of(context).size.width * 0.4,
+          height: MediaQuery.of(context).size.height * 0.2,
           alignment: Alignment.center,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(imagePath, height: height * 0.07),
-              SizedBox(height: height * 0.01),
+              Image.asset(imagePath,
+                  height: MediaQuery.of(context).size.height * 0.07),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
               Text(
                 text,
                 style: const TextStyle(
@@ -83,18 +89,22 @@ class _dashboardState extends State<dashboard> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                buildElevatedButton("TimeTable", 'assets/timetable.png'),
+                buildElevatedButton(context, "TimeTable",
+                    'assets/timetable.png', const dashboard()),
                 SizedBox(width: width * 0.05),
-                buildElevatedButton("Courses", 'assets/courses.png'),
+                buildElevatedButton(context, "Courses", 'assets/courses.png',
+                    const CourseList()),
               ],
             ),
             SizedBox(height: height * 0.023),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                buildElevatedButton("Attendance", 'assets/attendance.png'),
+                buildElevatedButton(context, "Attendance",
+                    'assets/attendance.png', const dashboard()),
                 SizedBox(width: width * 0.05),
-                buildElevatedButton("Grades", 'assets/grades.png'),
+                buildElevatedButton(
+                    context, "Grades", 'assets/grades.png', const dashboard()),
               ],
             ),
           ],

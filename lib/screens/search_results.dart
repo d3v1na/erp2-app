@@ -1,3 +1,4 @@
+import 'package:erp2_app/screens/course_details_screen.dart';
 import "package:flutter/material.dart";
 import 'package:erp2_app/models/cs_courses.dart';
 import 'package:erp2_app/models/course.dart';
@@ -123,7 +124,11 @@ class _SearchResultsState extends State<SearchResults> {
                   Course course = courses[index];
                   return GestureDetector(
                     onTap: () {
-                      //navigate to next screen
+                      Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>  CourseDetailsScreen(),
+                      ),
+                    );
                       
                     },
                     child: Card(
