@@ -121,7 +121,13 @@ class _CourseListState extends State<CourseList> {
                 itemCount: courses.length,
                 itemBuilder: (context, index) {
                   Course course = courses[index];
-                  return Card(
+                  return GestureDetector(
+                    onTap: () {
+                      //show that its tapped
+                      ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Gesture Detected!')));
+                    },
+                    child: Card(
                     margin: const EdgeInsets.symmetric(vertical: 4),
                     elevation: 2,
                     child: ListTile(
@@ -161,6 +167,8 @@ class _CourseListState extends State<CourseList> {
                       ),
                       trailing: Text(course.credits),
                     ),
+                  )
+
                   );
                 },
               ),
@@ -184,7 +192,6 @@ class _CourseListState extends State<CourseList> {
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-
                     minimumSize: Size(108, 48),
                     primary: const Color(0xff545F71),
                     padding: const EdgeInsets.symmetric(
@@ -251,7 +258,6 @@ class _CourseListState extends State<CourseList> {
               ],
             )
           ],
-
         ),
       ),
     );

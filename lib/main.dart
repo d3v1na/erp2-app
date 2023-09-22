@@ -4,6 +4,11 @@ import 'package:erp2_app/screens/welcome.dart';
 import 'package:erp2_app/screens/dashboard.dart';
 import 'package:erp2_app/screens/search.dart';
 import 'package:erp2_app/screens/search_results.dart';
+import 'package:erp2_app/screens/course_details_screen.dart';
+import 'package:erp2_app/models/my_courses.dart';
+import 'package:erp2_app/models/cs_courses.dart';
+import 'package:erp2_app/models/course.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Inter',
       ),
-      home: const SearchResults(),
+      home: CourseList(),
     );
   }
 }
