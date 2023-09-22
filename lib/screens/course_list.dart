@@ -1,9 +1,11 @@
 import 'package:erp2_app/models/course.dart';
 import 'package:flutter/material.dart';
 import 'package:erp2_app/models/my_courses.dart';
+import 'package:erp2_app/screens/course_details_screen.dart';
 
 class CourseList extends StatefulWidget {
   const CourseList({Key? key}) : super(key: key);
+
 
   @override
   _CourseListState createState() => _CourseListState();
@@ -123,9 +125,15 @@ class _CourseListState extends State<CourseList> {
                   Course course = courses[index];
                   return GestureDetector(
                     onTap: () {
-                      //show that its tapped
-                      ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Gesture Detected!')));
+                      //navigate to course details screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CourseDetailsScreen(
+                          ),
+                        ),
+                      );
+
                     },
                     child: Card(
                     margin: const EdgeInsets.symmetric(vertical: 4),
