@@ -8,6 +8,7 @@ import 'package:erp2_app/screens/course_details_screen.dart';
 import 'package:erp2_app/models/my_courses.dart';
 import 'package:erp2_app/models/cs_courses.dart';
 import 'package:erp2_app/models/course.dart';
+import 'package:erp2_app/screens/grades.dart';
 
 
 void main() {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Inter',
       ),
-      home: Welcome(),
+      home: Grades(),
     );
   }
 }
