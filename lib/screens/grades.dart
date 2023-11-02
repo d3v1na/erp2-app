@@ -47,11 +47,11 @@ class _GradesState extends State<Grades> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Course Details'),
           content: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
+              SizedBox(height: 20),
               CircleAvatar(
                 backgroundColor: const Color(0xff545F71),
                 radius: 30,
@@ -66,7 +66,9 @@ class _GradesState extends State<Grades> {
                     ),
                   ),
                 )),
+              SizedBox(height: 40),
               Text('Course Name: $courseName'),
+              SizedBox(height: 40),
               Text('Instructor: $instructor'),
             ],
           ),
@@ -85,6 +87,7 @@ class _GradesState extends State<Grades> {
                   ),
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(108, 48),
+                    alignment: Alignment.center,
                     primary: Color.fromARGB(153, 84, 95, 113),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 16,
