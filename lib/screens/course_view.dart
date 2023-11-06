@@ -58,30 +58,32 @@ class _RoundedCourseItemState extends State<RoundedCourseItem> {
       child: Column(
         children: <Widget>[
           ListTile(
+            contentPadding: EdgeInsets.symmetric(
+                horizontal: 16.0, vertical: 4.0), // Adjust padding here
             title: Text(
               widget.courseName,
               style: const TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xffb545F71)),
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xffb545F71),
+              ),
             ),
+            subtitle: _isExpanded
+                ? Text(
+                    widget.instructorName,
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Inter',
+                      color: Color(0xffb545F71),
+                    ),
+                  )
+                : null,
             trailing: IconButton(
               icon: Icon(_isExpanded ? Icons.expand_less : Icons.expand_more),
               onPressed: toggleExpansion,
             ),
           ),
-          if (_isExpanded)
-            ListTile(
-              title: Text(
-                widget.instructorName,
-                style: const TextStyle(
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Inter',
-                  color: Color(0xffb545F71),
-                ),
-              ),
-            ),
           if (_isExpanded)
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
