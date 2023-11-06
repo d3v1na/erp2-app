@@ -1,5 +1,6 @@
 import 'package:erp2_app/screens/attendance.dart';
 import 'package:erp2_app/screens/course_list.dart';
+import 'package:erp2_app/screens/interest_recc.dart';
 import 'package:flutter/material.dart';
 import 'package:erp2_app/screens/welcome.dart';
 import 'package:erp2_app/screens/dashboard.dart';
@@ -30,3 +31,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
