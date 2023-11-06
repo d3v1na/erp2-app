@@ -3,6 +3,7 @@ import 'course_list.dart';
 import 'grades.dart';
 import 'menu.dart';
 import 'attendance.dart';
+import 'timetable.dart';
 
 class dashboard extends StatefulWidget {
   const dashboard({super.key});
@@ -82,7 +83,7 @@ class _dashboardState extends State<dashboard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 buildElevatedButton(context, "TimeTable",
-                    'assets/timetable.png', const dashboard()),
+                    'assets/timetable.png', const TimeTable()),
                 SizedBox(width: width * 0.05),
                 buildElevatedButton(context, "Courses", 'assets/courses.png',
                     const CourseList()),
