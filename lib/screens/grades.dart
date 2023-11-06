@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'menu.dart';
 
 class Grades extends StatefulWidget {
   const Grades({Key? key}) : super(key: key);
@@ -37,11 +38,10 @@ class _GradesState extends State<Grades> {
       {"Course Code": "CSD212", "Credits": "4.00", "Grade": "A"},
       {"Course Code": "CSD213", "Credits": "4.00", "Grade": "A"},
       {"Course Code": "CSD214", "Credits": "4.00", "Grade": "A"},
-
     ],
   };
 
-    // Function to show the course details in a popup
+  // Function to show the course details in a popup
   void _showCourseDetails(String courseName, String instructor) {
     showDialog(
       context: context,
@@ -53,19 +53,19 @@ class _GradesState extends State<Grades> {
             children: [
               SizedBox(height: 20),
               CircleAvatar(
-                backgroundColor: const Color(0xff545F71),
-                radius: 30,
-                child: Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'CSD\n 311',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
+                  backgroundColor: const Color(0xff545F71),
+                  radius: 30,
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'CSD\n 311',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                )),
+                  )),
               SizedBox(height: 40),
               Text('Course Name: $courseName'),
               SizedBox(height: 40),
@@ -78,25 +78,25 @@ class _GradesState extends State<Grades> {
                 Navigator.of(context).pop();
               },
               child: Text(
-                    "Close",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(108, 48),
-                    alignment: Alignment.center,
-                    primary: Color.fromARGB(153, 84, 95, 113),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 13,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                  ),
+                "Close",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(108, 48),
+                alignment: Alignment.center,
+                primary: Color.fromARGB(153, 84, 95, 113),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 13,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6),
+                ),
+              ),
             ),
           ],
         );
@@ -123,16 +123,8 @@ class _GradesState extends State<Grades> {
             fontWeight: FontWeight.w700,
           ),
         ),
-        leading: IconButton(
-          icon: Image.asset(
-            'assets/notes.png',
-            height: height * 0.5,
-          ),
-          onPressed: () {
-            // Handle icon button click here
-          },
-        ),
       ),
+      endDrawer: MenuScreen(),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: width * 0.05,
@@ -143,7 +135,10 @@ class _GradesState extends State<Grades> {
           children: [
             Text(
               'Term',
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: const Color(0xff545F71)),
+              style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xff545F71)),
             ),
             SizedBox(height: height * 0.01),
             // Container for subject with dropdown
@@ -177,7 +172,10 @@ class _GradesState extends State<Grades> {
                         value: value,
                         child: Text(
                           value,
-                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: const Color(0xff545F71)),
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xff545F71)),
                         ),
                       );
                     }).toList(),
@@ -191,43 +189,64 @@ class _GradesState extends State<Grades> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: DataTable(
-                columns: [
-                  DataColumn(label: Text('Course Code')),
-                  DataColumn(label: Text('Credits')),
-                  DataColumn(label: Text('Grade')),
-                  DataColumn(label: Container(padding: EdgeInsets.symmetric(horizontal: 1.0),)), 
-                ],
-                rows: termData[termValue]!
-                    .map(
-                      (data) => DataRow(
-                        cells: [
-                          
-                          DataCell(Text(data['Course Code'].toString())),
-                          DataCell(Text(data['Credits'].toString())),
-                          DataCell(Text(data['Grade'].toString())),
-                          DataCell(
-                            IconButton(
-                              icon: Icon(Icons.info),
-                              //change the icon color here
-                              color: const Color(0xff545F71),
-                              //change size of clickable area
-                              iconSize: 14.0,
-                              alignment: Alignment.centerLeft,
-                              
-                              onPressed: () {
-                                // Show course details popup
-                                _showCourseDetails("Artificial Intelligence", "Snehasis Mukherjee");
-                              },
+                  columns: [
+                    DataColumn(label: Text('Course Code')),
+                    DataColumn(label: Text('Credits')),
+                    DataColumn(label: Text('Grade')),
+                    DataColumn(
+                        label: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 1.0),
+                    )),
+                  ],
+                  rows: termData[termValue]!
+                      .map(
+                        (data) => DataRow(
+                          cells: [
+                            DataCell(Text(data['Course Code'].toString())),
+                            DataCell(Text(data['Credits'].toString())),
+                            DataCell(Text(data['Grade'].toString())),
+                            DataCell(
+                              IconButton(
+                                icon: Icon(Icons.info),
+                                //change the icon color here
+                                color: const Color(0xff545F71),
+                                //change size of clickable area
+                                iconSize: 14.0,
+                                alignment: Alignment.centerLeft,
+
+                                onPressed: () {
+                                  // Show course details popup
+                                  _showCourseDetails("Artificial Intelligence",
+                                      "Snehasis Mukherjee");
+                                },
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    )
-                    .toList(),
-              ),
-              )
+                          ],
+                        ),
+                      )
+                      .toList(),
+                  
+                ),
               
+              ),
+              // Display SGPA and CGPA
+            if (termValue != 'Select Term')
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text('SGPA: 7.3',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                    Text('CGPA: 8.2',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ),
           ],
+          
         ),
       ),
     );

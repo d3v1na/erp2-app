@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'course_list.dart';
+import 'grades.dart';
+import 'menu.dart';
 
 class dashboard extends StatefulWidget {
   const dashboard({super.key});
@@ -28,10 +30,7 @@ class _dashboardState extends State<dashboard> {
           padding: const EdgeInsets.all(0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6),
-            side: BorderSide(
-              color: const Color(0xff545F71),
-              width: MediaQuery.of(context).size.width * 0.004,
-            ),
+            
           ),
         ),
         child: Container(
@@ -72,16 +71,8 @@ class _dashboardState extends State<dashboard> {
             fontWeight: FontWeight.w700,
           ),
         ),
-        leading: IconButton(
-          icon: Image.asset(
-            'assets/notes.png',
-            height: height * 0.5,
-          ),
-          onPressed: () {
-            // Handle icon button click here
-          },
-        ),
       ),
+      endDrawer: MenuScreen(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -104,7 +95,7 @@ class _dashboardState extends State<dashboard> {
                     'assets/attendance.png', const dashboard()),
                 SizedBox(width: width * 0.05),
                 buildElevatedButton(
-                    context, "Grades", 'assets/grades.png', const dashboard()),
+                    context, "Grades", 'assets/grades.png', const Grades()),
               ],
             ),
           ],

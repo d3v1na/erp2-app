@@ -1,9 +1,14 @@
+import 'package:erp2_app/screens/course_list.dart';
+import 'package:erp2_app/screens/swap.dart';
 import 'package:flutter/material.dart';
 import 'package:erp2_app/models/course.dart';
 import 'package:erp2_app/models/course.dart'; // Import the necessary course model
 import 'menu.dart';
 
-class CourseDetailsScreen extends StatelessWidget {
+
+
+class EnrolledCourseDetails extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -155,17 +160,19 @@ class CourseDetailsScreen extends StatelessWidget {
             SizedBox(height: 200),
 
             Row(
-              //clear and search buttons
+              // 2 buttons
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                //button 1 for enroll
+                
+
+                //button 2 for drop
                 ElevatedButton(
                   onPressed: () {
                     // Handle button click here
-                    //go to the previous page
-                    Navigator.pop(context);
                   },
                   child: Text(
-                    "Back",
+                    "Drop",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -184,12 +191,19 @@ class CourseDetailsScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                //button 3 for swap
                 ElevatedButton(
                   onPressed: () {
                     // Handle button click here
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const Swap(),
+                      ),
+                    );
                   },
                   child: Text(
-                    "Enroll",
+                    "Swap",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -198,7 +212,7 @@ class CourseDetailsScreen extends StatelessWidget {
                   ),
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(168, 48),
-                    primary: Color.fromARGB(255, 84, 95, 113),
+                    primary: Color.fromARGB(153, 84, 95, 113),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 16,
                       vertical: 13,

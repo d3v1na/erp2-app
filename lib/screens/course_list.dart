@@ -1,8 +1,12 @@
 import 'package:erp2_app/models/course.dart';
+import 'package:erp2_app/screens/enrolled_course_details.dart';
+import 'package:erp2_app/screens/swap_requests.dart';
 import 'package:flutter/material.dart';
 import 'package:erp2_app/models/my_courses.dart';
 import 'package:erp2_app/screens/course_details_screen.dart';
 import 'package:erp2_app/screens/search.dart';
+import 'menu.dart';
+import 'enrolled_course_details.dart';
 
 class CourseList extends StatefulWidget {
   const CourseList({Key? key}) : super(key: key);
@@ -54,16 +58,10 @@ class _CourseListState extends State<CourseList> {
             fontWeight: FontWeight.w700,
           ),
         ),
-        leading: IconButton(
-          icon: Image.asset(
-            'assets/notes.png',
-            height: height * 0.5,
-          ),
-          onPressed: () {
-            // Handle icon button click here
-          },
-        ),
+        
+        
       ),
+      endDrawer: MenuScreen(),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: width * 0.05,
@@ -83,42 +81,11 @@ class _CourseListState extends State<CourseList> {
             ),
 
             // "Sort by" text
-            Row(
-              children: [
-                const Text(
-                  "Sort by ",
-                  style: TextStyle(
-                    color: Color(0xff545F71),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-
-                // Sorting dropdown menu
-                DropdownButton<String>(
-                  style: TextStyle(
-                    color: const Color(0xff545F71),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                  ),
-                  value: selectedSortOption,
-                  onChanged: (String? newValue) {
-                    if (newValue != null) {
-                      _sortCoursesBy(newValue);
-                    }
-                  },
-                  items: sortOptions.map((String option) {
-                    return DropdownMenuItem<String>(
-                      value: option,
-                      child: Text(option),
-                    );
-                  }).toList(),
-                ),
-              ],
-            ),
+            
 
             SizedBox(height: height * 0.02),
             Expanded(
+              
               child: ListView.builder(
                 itemCount: courses.length,
                 itemBuilder: (context, index) {
@@ -129,7 +96,7 @@ class _CourseListState extends State<CourseList> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CourseDetailsScreen(),
+                            builder: (context) => EnrolledCourseDetails(),
                           ),
                         );
                       },
@@ -200,7 +167,7 @@ class _CourseListState extends State<CourseList> {
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    minimumSize: Size(108, 48),
+                    minimumSize: Size(168, 48),
                     primary: const Color(0xff545F71),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 16,
@@ -212,36 +179,16 @@ class _CourseListState extends State<CourseList> {
                   ),
                 ),
 
-                //button 2 for drop
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle button click here
-                  },
-                  child: Text(
-                    "Drop",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(108, 48),
-                    primary: Color.fromARGB(153, 84, 95, 113),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 13,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                  ),
-                ),
-
+                
                 //button 3 for swap
                 ElevatedButton(
                   onPressed: () {
                     // Handle button click here
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>  SwapRequests(),
+                      ),
+                    );
                   },
                   child: Text(
                     "Swap",
@@ -252,7 +199,7 @@ class _CourseListState extends State<CourseList> {
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    minimumSize: Size(108, 48),
+                    minimumSize: Size(168, 48),
                     primary: Color.fromARGB(153, 84, 95, 113),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 16,

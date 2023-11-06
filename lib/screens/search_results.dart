@@ -2,6 +2,7 @@ import 'package:erp2_app/screens/course_details_screen.dart';
 import "package:flutter/material.dart";
 import 'package:erp2_app/models/cs_courses.dart';
 import 'package:erp2_app/models/course.dart';
+import 'menu.dart';
 
 class SearchResults extends StatefulWidget {
   const SearchResults({Key? key}) : super(key: key);
@@ -53,16 +54,9 @@ class _SearchResultsState extends State<SearchResults> {
             fontWeight: FontWeight.w700,
           ),
         ),
-        leading: IconButton(
-          icon: Image.asset(
-            'assets/notes.png',
-            height: height * 0.5,
-          ),
-          onPressed: () {
-            // Handle icon button click here
-          },
-        ),
+        
       ),
+      endDrawer: MenuScreen(),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: width * 0.05,
@@ -125,11 +119,10 @@ class _SearchResultsState extends State<SearchResults> {
                   return GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) =>  CourseDetailsScreen(),
-                      ),
-                    );
-                      
+                        MaterialPageRoute(
+                          builder: (context) => CourseDetailsScreen(),
+                        ),
+                      );
                     },
                     child: Card(
                       margin: const EdgeInsets.symmetric(vertical: 4),
