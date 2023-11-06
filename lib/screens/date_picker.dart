@@ -7,6 +7,12 @@ class DatePickerContainer extends StatefulWidget {
 
 class _DatePickerContainerState extends State<DatePickerContainer> {
   DateTime _selectedDate = DateTime.now();
+  int _selectedCourseIndex = 0; // Index of the selected course
+  List<String> courses = [
+    "Course 1",
+    "Course 2",
+    "Course 3",
+  ];
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -18,6 +24,7 @@ class _DatePickerContainerState extends State<DatePickerContainer> {
     if (picked != null && picked != _selectedDate) {
       setState(() {
         _selectedDate = picked;
+        updateSelectedCourse(); // Update the selected course
       });
     }
   }
@@ -25,12 +32,23 @@ class _DatePickerContainerState extends State<DatePickerContainer> {
   void _selectPreviousDate() {
     setState(() {
       _selectedDate = _selectedDate.subtract(Duration(days: 1));
+      updateSelectedCourse(); // Update the selected course
     });
   }
 
   void _selectNextDate() {
     setState(() {
       _selectedDate = _selectedDate.add(Duration(days: 1));
+      updateSelectedCourse(); // Update the selected course
+    });
+  }
+
+  void updateSelectedCourse() {
+    // Implement logic to determine the selected course based on the selected date
+    // For example, you can use the _selectedDate to calculate the index.
+    int newIndex = _selectedDate.day % courses.length;
+    setState(() {
+      _selectedCourseIndex = newIndex;
     });
   }
 
@@ -63,7 +81,6 @@ class _DatePickerContainerState extends State<DatePickerContainer> {
             IconButton(
               onPressed: _selectPreviousDate,
               icon: Icon(Icons.arrow_left),
-               
             ),
             Text(
               '${_selectedDate.toLocal()}'.split(' ')[0],
@@ -73,7 +90,7 @@ class _DatePickerContainerState extends State<DatePickerContainer> {
             ),
             IconButton(
               onPressed: _selectNextDate,
-              icon: Icon(Icons.arrow_right), // You can customize the icon
+              icon: Icon(Icons.arrow_right),
             ),
           ],
         ),

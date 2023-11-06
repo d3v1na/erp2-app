@@ -11,7 +11,6 @@ import 'package:erp2_app/models/my_courses.dart';
 import 'package:erp2_app/models/cs_courses.dart';
 import 'package:erp2_app/models/course.dart';
 import 'package:erp2_app/screens/grades.dart';
-import 'package:erp2_app/screens/courseWise.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Inter',
       ),
-      home: CouseView(),
+      home: dashboard(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'course_list.dart';
+import 'attendance.dart';
 
 class dashboard extends StatefulWidget {
   const dashboard({super.key});
@@ -101,7 +102,7 @@ class _dashboardState extends State<dashboard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 buildElevatedButton(context, "Attendance",
-                    'assets/attendance.png', const dashboard()),
+                    'assets/attendance.png', const Attendance()),
                 SizedBox(width: width * 0.05),
                 buildElevatedButton(
                     context, "Grades", 'assets/grades.png', const dashboard()),
