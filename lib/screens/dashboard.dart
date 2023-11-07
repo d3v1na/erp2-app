@@ -1,3 +1,4 @@
+import 'package:erp2_app/screens/interest_recc.dart';
 import 'package:flutter/material.dart';
 import 'course_list.dart';
 import 'grades.dart';
@@ -101,6 +102,20 @@ class _dashboardState extends State<dashboard> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          // Navigate to the course details page and pass the selectedInterests as arguments
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => InterestSelectionPage(),
+            ),
+          );
+        },
+       backgroundColor: const Color(0xff545F71) ,
+        label: Text("Recommend Courses?"),
+        // icon: Icon(Icons.save),
       ),
     );
   }

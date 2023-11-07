@@ -11,9 +11,10 @@ class _InterestSelectionPageState extends State<InterestSelectionPage> {
   final List<String> interests = [
     "CSE",
     "ECE",
-    "CIVIL",
+    "Mechanical",
+    "Physics",
     "Management",
-    "History""Sociology""Communication"
+    "History","Sociology","Communication",
     // Add more interests here
   ];
 
@@ -93,9 +94,12 @@ class _InterestSelectionPageState extends State<InterestSelectionPage> {
             ),
           );
         },
+       backgroundColor: const Color(0xff545F71) ,
         label: Text("Recommend"),
         // icon: Icon(Icons.save),
       ),
     );
   }
 }
+
+
