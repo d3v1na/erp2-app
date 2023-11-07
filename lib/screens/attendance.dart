@@ -1,6 +1,7 @@
 import 'package:erp2_app/screens/daily_view.dart';
 import 'package:flutter/material.dart';
 import 'package:erp2_app/screens/course_view.dart';
+import 'menu.dart';
 
 class Attendance extends StatefulWidget {
   const Attendance({super.key});
@@ -38,6 +39,8 @@ class _AttendanceState extends State<Attendance> {
             ],
           ),
         ),
+        endDrawer: MenuScreen(),
+
         body: const TabBarView(
           children: [
             Center(

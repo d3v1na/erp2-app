@@ -2,7 +2,8 @@ import 'package:erp2_app/screens/daily_view.dart';
 import 'package:flutter/material.dart';
 import 'package:erp2_app/screens/course_view.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-
+import 'package:erp2_app/screens/course_details_screen.dart';
+import 'menu.dart';
 
 class TimeTable extends StatefulWidget {
   const TimeTable({super.key});
@@ -29,6 +30,7 @@ class _TimeTableState extends State<TimeTable> {
           ),
         ),
       ),
+      endDrawer: MenuScreen(),
       body: Column(
         children: [
           Expanded(
@@ -36,15 +38,15 @@ class _TimeTableState extends State<TimeTable> {
               view: CalendarView.workWeek,
               firstDayOfWeek: 1,
               timeSlotViewSettings: TimeSlotViewSettings(
-                startHour: 7, 
-                endHour: 19,
-                timeIntervalHeight: 50,
-                numberOfDaysInView: 3,
-                minimumAppointmentDuration: Duration(minutes: 30)
-              ),
+                  startHour: 7,
+                  endHour: 19,
+                  timeIntervalHeight: 50,
+                  numberOfDaysInView: 3,
+                  minimumAppointmentDuration: Duration(minutes: 30)),
               dataSource: MeetingDataSource(_getDataSource()),
             ),
           ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.01),
           Text(
             "Course Recommendations",
             style: TextStyle(
@@ -58,6 +60,137 @@ class _TimeTableState extends State<TimeTable> {
             child: Row(
               children: [
                 // card 1
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CourseDetailsScreen(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.6,
+                    margin: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          blurRadius: 5,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Artificial Intelligence",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff545F71),
+                          ),
+                        ),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01),
+                        Row(
+                          children: [
+                            Text(
+                              "Course Code: ",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff545F71),
+                              ),
+                            ),
+                            Text(
+                              "CSD 311",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff545F71),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01),
+                        Row(
+                          children: [
+                            Text(
+                              "Time: ",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff545F71),
+                              ),
+                            ),
+                            Text(
+                              "7:00 - 8:00",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff545F71),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01),
+                        Row(
+                          children: [
+                            Text(
+                              "Days of the Week: ",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff545F71),
+                              ),
+                            ),
+                            Text(
+                              "MWF",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff545F71),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01),
+                        Row(
+                          children: [
+                            Text(
+                              "Instructor: ",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff545F71),
+                              ),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.3,
+                              child: Text(
+                                "Snehasis Mukherjee",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff545F71),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.6,
                   margin: EdgeInsets.all(10),
@@ -77,14 +210,15 @@ class _TimeTableState extends State<TimeTable> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Intro to Logic & Function Programming",
+                        "Software Design Lab",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Color(0xff545F71),
                         ),
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01),
                       Row(
                         children: [
                           Text(
@@ -105,7 +239,8 @@ class _TimeTableState extends State<TimeTable> {
                           ),
                         ],
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01),
                       Row(
                         children: [
                           Text(
@@ -126,7 +261,8 @@ class _TimeTableState extends State<TimeTable> {
                           ),
                         ],
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01),
                       Row(
                         children: [
                           Text(
@@ -147,7 +283,8 @@ class _TimeTableState extends State<TimeTable> {
                           ),
                         ],
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01),
                       Row(
                         children: [
                           Text(
@@ -158,20 +295,24 @@ class _TimeTableState extends State<TimeTable> {
                               color: Color(0xff545F71),
                             ),
                           ),
-                          Text(
-                            "Dr. John Doe",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff545F71),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: Text(
+                              "Snehasis Mukherjee",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff545F71),
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ],
                   ),
-            ),
-            Container(
+                ),
+                Container(
                   width: MediaQuery.of(context).size.width * 0.6,
                   margin: EdgeInsets.all(10),
                   padding: EdgeInsets.all(10),
@@ -190,14 +331,15 @@ class _TimeTableState extends State<TimeTable> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Intro to Logic & Function Programming",
+                        "Applied Cryptography",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Color(0xff545F71),
                         ),
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01),
                       Row(
                         children: [
                           Text(
@@ -218,7 +360,8 @@ class _TimeTableState extends State<TimeTable> {
                           ),
                         ],
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01),
                       Row(
                         children: [
                           Text(
@@ -239,7 +382,8 @@ class _TimeTableState extends State<TimeTable> {
                           ),
                         ],
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01),
                       Row(
                         children: [
                           Text(
@@ -260,7 +404,8 @@ class _TimeTableState extends State<TimeTable> {
                           ),
                         ],
                       ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.01),
                       Row(
                         children: [
                           Text(
@@ -271,137 +416,29 @@ class _TimeTableState extends State<TimeTable> {
                               color: Color(0xff545F71),
                             ),
                           ),
-                          Text(
-                            "Dr. John Doe",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff545F71),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: Text(
+                              "Snehasis Mukherjee",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff545F71),
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ],
                   ),
-            ),Container(
-                  width: MediaQuery.of(context).size.width * 0.6,
-                  margin: EdgeInsets.all(10),
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        blurRadius: 5,
-                        offset: Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Intro to Logic & Function Programming",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xff545F71),
-                        ),
-                      ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                      Row(
-                        children: [
-                          Text(
-                            "Course Code: ",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff545F71),
-                            ),
-                          ),
-                          Text(
-                            "CS 101",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff545F71),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                      Row(
-                        children: [
-                          Text(
-                            "Time: ",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff545F71),
-                            ),
-                          ),
-                          Text(
-                            "7:00 - 8:00",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff545F71),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                      Row(
-                        children: [
-                          Text(
-                            "Days of the Week: ",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff545F71),
-                            ),
-                          ),
-                          Text(
-                            "MWF",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff545F71),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                      Row(
-                        children: [
-                          Text(
-                            "Instructor: ",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff545F71),
-                            ),
-                          ),
-                          Text(
-                            "Dr. John Doe",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff545F71),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-    ],
-  ),
-);
+    );
   }
 }
 
@@ -413,12 +450,8 @@ List<Meeting> _getDataSource() {
       DateTime(today.year, today.month, today.day, 7, 0, 0);
   final DateTime endTime = startTime.add(const Duration(hours: 1));
 
-  meetings.add(Meeting(
-      'Introduction to CS - D217',
-      startTime,
-      endTime,
-      const Color(0xFF0F8644),
-      false));
+  meetings.add(Meeting('Introduction to CS - D217', startTime, endTime,
+      const Color(0xFF0F8644), false));
 
   meetings.add(Meeting(
       'Game Theory - D206',
@@ -428,7 +461,7 @@ List<Meeting> _getDataSource() {
       false));
 
   meetings.add(Meeting(
-      'Artificial Intelligence - C309',
+      'Data Mining - C309',
       startTime.add(const Duration(hours: 5)),
       endTime.add(const Duration(hours: 6)),
       const Color(0xFF0F8644),

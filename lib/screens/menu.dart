@@ -2,6 +2,8 @@ import 'package:erp2_app/screens/course_list.dart';
 import 'package:flutter/material.dart';
 import 'dashboard.dart';
 import 'grades.dart';
+import 'attendance.dart';
+import 'timetable.dart';
 
 class MenuScreen extends StatelessWidget {
   @override
@@ -56,6 +58,11 @@ class MenuScreen extends StatelessWidget {
               ),
               onTap: () {
                 // Handle menu item 2 click
+                Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>  TimeTable(),
+                      ),
+                    );
                 
               },
             ),
@@ -88,6 +95,11 @@ class MenuScreen extends StatelessWidget {
               ),
               onTap: () {
                 // Handle menu item 2 click
+                Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>  Attendance(),
+                      ),
+                    );
                 
               },
             ),
